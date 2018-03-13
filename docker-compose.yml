@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  auth-db:
+    image: postgres:10.3-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${AUTH_PGSQL_PASSWORD}
+      POSTGRES_USER: ${AUTH_PGSQL_USER}
+    ports:
+      - "18001:5432"
+
+  auth-app:
+    build: ./auth
+    image: auth-app:latest
+    environment:
+      DEBUG: ${AUTH_APP_DEBUG}
+      SECRET_KEY: ${AUTH_APP_SECRET_KEY}
+      DB_HOST: auth-db
+      DB_PORT: 18001
+      DB_NAME: ${AUTH_PGSQL_USER}
+      DB_USER: ${AUTH_PGSQL_USER}
+      DB_PASSWORD: ${AUTH_PGSQL_PASSWORD}
+    depends_on:
+      - auth-db
+    ports:
+      - "18000:18000"

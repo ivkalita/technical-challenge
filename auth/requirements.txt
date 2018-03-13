@@ -1,0 +1,4 @@
+django==2.0.3
+djangorestframework==3.7.7
+django-environ==0.4.3
+environ==1.0
