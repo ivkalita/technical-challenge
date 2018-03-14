@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   auth-db:
@@ -7,8 +7,11 @@ services:
     environment:
       POSTGRES_PASSWORD: ${AUTH_PGSQL_PASSWORD}
       POSTGRES_USER: ${AUTH_PGSQL_USER}
-    ports:
-      - "18001:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "PGPASSWORD=${AUTH_PGSQL_PASSWORD} pg_isready -U ${AUTH_PGSQL_USER} -W"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
 
   auth-app:
     build: ./auth
@@ -17,11 +20,17 @@ services:
       DEBUG: ${AUTH_APP_DEBUG}
       SECRET_KEY: ${AUTH_APP_SECRET_KEY}
       DB_HOST: auth-db
-      DB_PORT: 18001
+      DB_PORT: 5432
       DB_NAME: ${AUTH_PGSQL_USER}
       DB_USER: ${AUTH_PGSQL_USER}
       DB_PASSWORD: ${AUTH_PGSQL_PASSWORD}
-    depends_on:
+    links:
       - auth-db
+
+  proxy-nginx:
+    build: ./proxy-nginx
+    image: proxy-nginx:latest
+    links:
+      - auth-app
     ports:
-      - "18000:18000"
+      - "${PROXY_NGINX_HOST_PORT}:${PROXY_NGINX_MAIN_PORT}"

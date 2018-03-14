@@ -14,8 +14,14 @@ TBD
 ### 2. Auth database
 TBD
 
-## Installation
+### 3. Nginx proxy
 TBD
+
+## Installation
+
+```bash
+$ docker-compose up --force-recreate --build
+```
 
 ## Testing
 TBD
