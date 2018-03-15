@@ -3,3 +3,5 @@ djangorestframework==3.7.7
 django-environ==0.4.3
 psycopg2==2.6.2
 environ==1.0
+django-rest-auth==0.9.3
+django-allauth==0.35.0
