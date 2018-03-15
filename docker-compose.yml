@@ -27,10 +27,39 @@ services:
     links:
       - auth-db
 
+  api-db:
+    image: postgres:10.3-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${API_PGSQL_PASSWORD}
+      POSTGRES_USER: ${API_PGSQL_USER}
+    healthcheck:
+      test: ["CMD-SHELL", "PGPASSWORD=${API_PGSQL_PASSWORD} pg_isready -U ${API_PGSQL_USER} -W"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  api-app:
+    build: ./api
+    image: api-app:latest
+    environment:
+      DEBUG: ${API_APP_DEBUG}
+      SECRET_KEY: ${API_APP_SECRET_KEY}
+      DB_HOST: api-db
+      DB_PORT: 5432
+      DB_NAME: ${API_PGSQL_USER}
+      DB_USER: ${API_PGSQL_USER}
+      DB_PASSWORD: ${API_PGSQL_PASSWORD}
+      AUTH_APP_BASE_URL: http://auth-app:8000
+    links:
+      - api-db
+      - auth-app
+
   proxy-nginx:
     build: ./proxy-nginx
     image: proxy-nginx:latest
     links:
       - auth-app
+      - api-app
     ports:
       - "${PROXY_NGINX_HOST_PORT}:${PROXY_NGINX_MAIN_PORT}"
