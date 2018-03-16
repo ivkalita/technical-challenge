@@ -540,11 +540,12 @@ var UserSerializer = (function () {
     function UserSerializer() {
     }
     UserSerializer.prototype.toJSON = function (value) {
+        var convertDate = function (date) { return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(); };
         var data = {
             'first_name': value.firstName,
             'second_name': value.lastName,
             'email': value.email,
-            'dob': value.dob.toISOString(),
+            'dob': convertDate(value.dob),
             'policy_code': value.policyCode
         };
         if (value.password) {

@@ -5,11 +5,12 @@ import { UserModel } from '../models/user.model';
 export class UserSerializer {
 
     toJSON(value: UserModel): any {
+        const convertDate = date => date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         const data = {
             'first_name': value.firstName,
             'second_name': value.lastName,
             'email': value.email,
-            'dob': value.dob.toISOString(),
+            'dob': convertDate(value.dob),
             'policy_code': value.policyCode
         };
 
