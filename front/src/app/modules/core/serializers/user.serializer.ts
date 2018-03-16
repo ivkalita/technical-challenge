@@ -8,7 +8,7 @@ export class UserSerializer {
         const convertDate = date => date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         const data = {
             'first_name': value.firstName,
-            'second_name': value.lastName,
+            'last_name': value.lastName,
             'email': value.email,
             'dob': convertDate(value.dob),
             'policy_code': value.policyCode
@@ -26,7 +26,7 @@ export class UserSerializer {
         return new UserModel(
             value.pk,
             value.first_name,
-            value.second_name,
+            value.last_name,
             value.email,
             new Date(value.dob),
             value.policy_code

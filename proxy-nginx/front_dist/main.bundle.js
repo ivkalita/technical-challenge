@@ -124,7 +124,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("./src/app/app.component.html"),
         styles: [__webpack_require__("./src/app/app.component.scss")]
@@ -151,6 +151,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_footer_footer_component__ = __webpack_require__("./src/app/components/footer/footer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_core_core_module__ = __webpack_require__("./src/app/modules/core/core.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modules_core_services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modules_core_guards_is_authenticated_guard__ = __webpack_require__("./src/app/modules/core/guards/is-authenticated.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modules_core_guards_not_authenticated_guard__ = __webpack_require__("./src/app/modules/core/guards/not-authenticated.guard.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -158,6 +160,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -187,7 +191,11 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__modules_core_core_module__["a" /* CoreModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_9__modules_core_services_auth_service__["a" /* AuthService */]],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_9__modules_core_services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_10__modules_core_guards_is_authenticated_guard__["a" /* IsAuthenticatedGuard */],
+            __WEBPACK_IMPORTED_MODULE_11__modules_core_guards_not_authenticated_guard__["a" /* NotAuthenticatedGuard */]
+        ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -245,7 +253,7 @@ var ContentComponent = (function () {
     return ContentComponent;
 }());
 ContentComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-content',
         template: __webpack_require__("./src/app/components/content/content.component.html"),
         styles: [__webpack_require__("./src/app/components/content/content.component.scss")]
@@ -306,7 +314,7 @@ var FooterComponent = (function () {
     return FooterComponent;
 }());
 FooterComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-footer',
         template: __webpack_require__("./src/app/components/footer/footer.component.html"),
         styles: [__webpack_require__("./src/app/components/footer/footer.component.scss")]
@@ -348,8 +356,8 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_core_services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_core_services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -382,17 +390,18 @@ var HeaderComponent = (function () {
         this._router.navigate(['/user/login']);
     };
     HeaderComponent.prototype.logout = function () {
-        this._router.navigate(['/user/logout']);
+        this._authService.logout();
+        this._router.navigate(['/']);
     };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-header',
         template: __webpack_require__("./src/app/components/header/header.component.html"),
         styles: [__webpack_require__("./src/app/components/header/header.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__modules_core_services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__modules_core_services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__modules_core_services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modules_core_services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], HeaderComponent);
 
 var _a, _b;
@@ -408,9 +417,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_client__ = __webpack_require__("./src/app/modules/core/services/auth.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_api_client__ = __webpack_require__("./src/app/modules/core/services/api.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__serializers_user_serializer__ = __webpack_require__("./src/app/modules/core/serializers/user.serializer.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_api_client__ = __webpack_require__("./src/app/modules/core/services/api.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__serializers_user_serializer__ = __webpack_require__("./src/app/modules/core/serializers/user.serializer.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -418,7 +426,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -439,14 +446,102 @@ CoreModule = __decorate([
         declarations: [],
         providers: [
             __WEBPACK_IMPORTED_MODULE_3__services_auth_client__["a" /* AuthClient */],
-            __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_api_client__["a" /* ApiClient */],
-            __WEBPACK_IMPORTED_MODULE_6__serializers_user_serializer__["a" /* UserSerializer */]
+            __WEBPACK_IMPORTED_MODULE_4__services_api_client__["a" /* ApiClient */],
+            __WEBPACK_IMPORTED_MODULE_5__serializers_user_serializer__["a" /* UserSerializer */]
         ]
     })
 ], CoreModule);
 
 //# sourceMappingURL=core.module.js.map
+
+/***/ }),
+
+/***/ "./src/app/modules/core/guards/is-authenticated.guard.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IsAuthenticatedGuard; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var IsAuthenticatedGuard = (function () {
+    function IsAuthenticatedGuard(_authService) {
+        this._authService = _authService;
+    }
+    IsAuthenticatedGuard.prototype.canActivate = function () {
+        return this.isAuthenticated();
+    };
+    IsAuthenticatedGuard.prototype.canActivateChild = function () {
+        return this.isAuthenticated();
+    };
+    IsAuthenticatedGuard.prototype.isAuthenticated = function () {
+        return this._authService.restore().map(function (user) { return user !== null; });
+    };
+    return IsAuthenticatedGuard;
+}());
+IsAuthenticatedGuard = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+], IsAuthenticatedGuard);
+
+var _a;
+//# sourceMappingURL=is-authenticated.guard.js.map
+
+/***/ }),
+
+/***/ "./src/app/modules/core/guards/not-authenticated.guard.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/modules/core/services/auth.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotAuthenticatedGuard; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var NotAuthenticatedGuard = (function () {
+    function NotAuthenticatedGuard(_authService) {
+        this._authService = _authService;
+    }
+    NotAuthenticatedGuard.prototype.canActivate = function () {
+        return this.isNotAuthenticated();
+    };
+    NotAuthenticatedGuard.prototype.canActivateChild = function () {
+        return this.isNotAuthenticated();
+    };
+    NotAuthenticatedGuard.prototype.isNotAuthenticated = function () {
+        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].of(this._authService.user === null);
+    };
+    return NotAuthenticatedGuard;
+}());
+NotAuthenticatedGuard = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+], NotAuthenticatedGuard);
+
+var _a;
+//# sourceMappingURL=not-authenticated.guard.js.map
 
 /***/ }),
 
@@ -543,7 +638,7 @@ var UserSerializer = (function () {
         var convertDate = function (date) { return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(); };
         var data = {
             'first_name': value.firstName,
-            'second_name': value.lastName,
+            'last_name': value.lastName,
             'email': value.email,
             'dob': convertDate(value.dob),
             'policy_code': value.policyCode
@@ -555,7 +650,7 @@ var UserSerializer = (function () {
         return data;
     };
     UserSerializer.prototype.fromJSON = function (value) {
-        return new __WEBPACK_IMPORTED_MODULE_1__models_user_model__["a" /* UserModel */](value.pk, value.first_name, value.second_name, value.email, new Date(value.dob), value.policy_code);
+        return new __WEBPACK_IMPORTED_MODULE_1__models_user_model__["a" /* UserModel */](value.pk, value.first_name, value.last_name, value.email, new Date(value.dob), value.policy_code);
     };
     return UserSerializer;
 }());
@@ -589,17 +684,20 @@ var ApiClient = (function () {
     function ApiClient(_http) {
         this._http = _http;
     }
-    ApiClient.prototype.get = function (url, params) {
-        return this.createRequest({ method: __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* RequestMethod */].Get, url: url, search: this.toURLSearchParams(params) });
+    ApiClient.prototype.get = function (url, params, token) {
+        return this.createRequest({ method: __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* RequestMethod */].Get, url: url, search: this.toURLSearchParams(params) }, token);
     };
-    ApiClient.prototype.post = function (url, data) {
-        return this.createRequest({ method: __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* RequestMethod */].Post, url: url, body: data });
+    ApiClient.prototype.post = function (url, data, token) {
+        return this.createRequest({ method: __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* RequestMethod */].Post, url: url, body: data }, token);
     };
-    ApiClient.prototype.createRequest = function (options, withContentTypeJson) {
+    ApiClient.prototype.createRequest = function (options, token, withContentTypeJson) {
         if (withContentTypeJson === void 0) { withContentTypeJson = true; }
         var opts = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* BaseRequestOptions */]();
         if (withContentTypeJson) {
             opts.headers.set('Content-Type', 'application/json');
+        }
+        if (token) {
+            opts.headers.set('Authorization', "Token " + token);
         }
         opts.withCredentials = true;
         return this._http.request(options.url, opts.merge(options));
@@ -660,13 +758,21 @@ var AuthClient = (function () {
     AuthClient.prototype.getUser = function (token) {
         var _this = this;
         return this._apiClient
-            .get('/auth/api/v1/user/', { token: token })
+            .get('/auth/api/v1/user/', null, token)
             .map(function (response) { return _this._userSerializer.fromJSON(response.json()); })
             .catch(function (response) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].of(null); });
     };
     AuthClient.prototype.register = function (user) {
         return this._apiClient
             .post('/auth/api/v1/registration/', this._userSerializer.toJSON(user))
+            .map(function (response) { return response.json()['key']; });
+    };
+    AuthClient.prototype.logout = function (token) {
+        return this._apiClient.post('/auth/api/v1/logout/', null, token);
+    };
+    AuthClient.prototype.login = function (email, password) {
+        return this._apiClient
+            .post('/auth/api/v1/login/', { email: email, password: password })
             .map(function (response) { return response.json()['key']; });
     };
     return AuthClient;
@@ -692,9 +798,9 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__("./node_modules/rxjs/add/observable/of.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_client__ = __webpack_require__("./src/app/modules/core/services/auth.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/Subject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__auth_client__ = __webpack_require__("./src/app/modules/core/services/auth.client.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -723,6 +829,13 @@ var AuthService = AuthService_1 = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AuthService.prototype, "token", {
+        get: function () {
+            return this.tryGetLocalAccessToken();
+        },
+        enumerable: true,
+        configurable: true
+    });
     AuthService.prototype.restore = function () {
         var accessToken = this.tryGetLocalAccessToken();
         if (!accessToken) {
@@ -735,9 +848,30 @@ var AuthService = AuthService_1 = (function () {
         if (this._user) {
             return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].of(this._user);
         }
-        var subject = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["Subject"]();
+        var subject = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
         this._authClient
             .register(user)
+            .subscribe(function (token) {
+            return _this.invalidateAccessToken(token).subscribe(function (updatedUser) { return subject.next(updatedUser); });
+        });
+        return subject;
+    };
+    AuthService.prototype.logout = function () {
+        if (this._user) {
+            this._user = null;
+        }
+        var key = this.tryGetLocalAccessToken();
+        if (!key) {
+            return;
+        }
+        this.removeAuthToken();
+        this._authClient.logout(key);
+    };
+    AuthService.prototype.login = function (email, password) {
+        var _this = this;
+        var subject = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
+        this._authClient
+            .login(email, password)
             .subscribe(function (token) {
             return _this.invalidateAccessToken(token).subscribe(function (updatedUser) { return subject.next(updatedUser); });
         });
@@ -748,25 +882,32 @@ var AuthService = AuthService_1 = (function () {
     };
     AuthService.prototype.invalidateAccessToken = function (token) {
         var _this = this;
+        // const user = new UserModel(1, 'Ivan', 'Kalita', 'input.txt@hotmail.com', new Date('1995-09-08'), '123asdfa', '');
+        // this._user = user;
+        // return Observable.of(user);
         return this._authClient
             .getUser(token)
             .map(function (user) {
             if (user) {
                 _this._user = user;
+                window.localStorage.setItem(AuthService_1.TOKEN_KEY, token);
             }
             else {
                 _this._user = null;
-                window.localStorage.setItem(AuthService_1.TOKEN_KEY, null);
+                _this.removeAuthToken();
             }
             return user;
         });
+    };
+    AuthService.prototype.removeAuthToken = function () {
+        window.localStorage.removeItem(AuthService_1.TOKEN_KEY);
     };
     return AuthService;
 }());
 AuthService.TOKEN_KEY = 'genetic_results_token_key';
 AuthService = AuthService_1 = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__auth_client__["a" /* AuthClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_client__["a" /* AuthClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__auth_client__["a" /* AuthClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__auth_client__["a" /* AuthClient */]) === "function" && _a || Object])
 ], AuthService);
 
 var AuthService_1, _a;

@@ -3,7 +3,7 @@ webpackJsonp([1],{
 /***/ "./src/app/modules/landing/components/page/page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\">\n    <h1>Welcome to <b class=\"text-primary\">Genetic Results</b></h1>\n    <h4>The best Genetic Results you've ever seen.</h4>\n    <h6>Secure. Precise. Fast.</h6>\n</div>\n\n<div class=\"auth-container\" *ngIf=\"!userLoggedIn\">\n    <button class=\"btn btn-primary btn-lg\" (click)=\"register()\">Sign Up!</button>\n    <p>Already have an account? <a href=\"/user/login\">Log in.</a></p>\n</div>\n\n<div class=\"check-container\" *ngIf=\"userLoggedIn\">\n    <button class=\"btn btn-success btn-lg\">Go and check your results</button>\n</div>"
+module.exports = "<div class=\"jumbotron\">\n    <h1>Welcome to <b class=\"text-primary\">Genetic Results</b></h1>\n    <h4>The best Genetic Results you've ever seen.</h4>\n    <h6>Secure. Precise. Fast.</h6>\n</div>\n\n<div class=\"auth-container\" *ngIf=\"!userLoggedIn\">\n    <button class=\"btn btn-primary btn-lg\" (click)=\"register()\">Sign Up!</button>\n    <p>Already have an account? <a href=\"/user/login\">Log in.</a></p>\n</div>\n\n<div class=\"check-container\" *ngIf=\"userLoggedIn\">\n    <button class=\"btn btn-success btn-lg\" (click)=\"goToProfile()\">Go and check your results</button>\n</div>"
 
 /***/ }),
 
@@ -15,7 +15,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "div.jumbotron {\n  text-align: center; }\n\ndiv.auth-container {\n  text-align: center; }\n  div.auth-container button {\n    margin-bottom: 10px; }\n", ""]);
+exports.push([module.i, "div.jumbotron {\n  text-align: center; }\n\ndiv.auth-container {\n  text-align: center; }\n  div.auth-container button {\n    margin-bottom: 10px; }\n\ndiv.check-container {\n  text-align: center; }\n  div.check-container button {\n    margin-bottom: 10px; }\n", ""]);
 
 // exports
 
@@ -60,10 +60,13 @@ var PageComponent = (function () {
     PageComponent.prototype.register = function () {
         return this._router.navigate(['/user/register']);
     };
+    PageComponent.prototype.goToProfile = function () {
+        return this._router.navigate(['/user']);
+    };
     return PageComponent;
 }());
 PageComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: 'app-page',
         template: __webpack_require__("./src/app/modules/landing/components/page/page.component.html"),
         styles: [__webpack_require__("./src/app/modules/landing/components/page/page.component.scss")]

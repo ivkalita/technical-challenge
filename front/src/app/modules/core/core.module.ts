@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
 import { AuthClient } from './services/auth.client';
-import { AuthService } from './services/auth.service';
 import { ApiClient } from './services/api.client';
 import { UserSerializer } from './serializers/user.serializer';
 
@@ -16,7 +15,6 @@ import { UserSerializer } from './serializers/user.serializer';
     ],
     providers: [
         AuthClient,
-        AuthService,
         ApiClient,
         UserSerializer
     ]

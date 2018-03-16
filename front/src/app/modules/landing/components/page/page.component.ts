@@ -19,6 +19,10 @@ export class PageComponent {
     }
 
     register() {
-        return this._router.navigate(['/user/register'])
+        return this._router.navigate(['/user/register']);
+    }
+
+    goToProfile() {
+        return this._router.navigate(['/user']);
     }
 }
