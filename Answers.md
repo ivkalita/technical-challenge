@@ -1,4 +1,4 @@
-# Answers on questions :)
+# Answers
 
 ### 1. The database design
 
