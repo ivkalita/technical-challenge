@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <h1>Welcome to <b class="text-primary">Genetic Results</b></h1>
+    <h4>The best Genetic Results you've ever seen.</h4>
+    <h6>Secure. Precise. Fast.</h6>
+</div>
+
+<div class="auth-container" *ngIf="!userLoggedIn">
+    <button class="btn btn-primary btn-lg" (click)="register()">Sign Up!</button>
+    <p>Already have an account? <a href="/user/login">Log in.</a></p>
+</div>
+
+<div class="check-container" *ngIf="userLoggedIn">
+    <button class="btn btn-success btn-lg">Go and check your results</button>
+</div>

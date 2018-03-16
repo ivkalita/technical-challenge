@@ -1,0 +1,73 @@
+<div class="form-container
+    col-lg-4 offset-lg-4
+    col-md-6 offset-md-3
+    col-sm-12
+    col-xs-12">
+    <form [formGroup]="form">
+        <div class="form-group" [ngClass]="{'is-invalid': firstName.dirty && firstName.invalid}">
+            <label for="first-name-input">First name</label>
+            <input type="text"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': firstName.dirty && firstName.invalid}"
+                   id="first-name-input"
+                   placeholder="John"
+                   formControlName="firstName">
+            <div class="invalid-feedback">
+                first name is required
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'is-invalid': lastName.dirty && lastName.invalid}">
+            <label for="last-name-input">Last name</label>
+            <input type="text"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': lastName.dirty && lastName.invalid}"
+                   id="last-name-input"
+                   placeholder="Doe"
+                   formControlName="lastName">
+            <div class="invalid-feedback">
+                last name is required
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'is-invalid': email.dirty && email.invalid}">
+            <label for="email-input">Email</label>
+            <input type="email"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': email.dirty && email.invalid}"
+                   id="email-input"
+                   placeholder="johndoe@example.com"
+                   formControlName="email">
+            <div class="invalid-feedback">
+                email should be valid
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'is-invalid': password.dirty && password.invalid}">
+            <label for="password-input">Your password</label>
+            <input type="password"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': password.dirty && password.invalid}"
+                   id="password-input"
+                   formControlName="password">
+        </div>
+        <div class="form-group" [ngClass]="{'is-invalid': dob.dirty && dob.invalid}">
+            <label for="dob-input">Date of birth</label>
+            <input type="date"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': dob.dirty && dob.invalid}"
+                   id="dob-input"
+                   formControlName="dob">
+        </div>
+        <div class="form-group" [ngClass]="{'is-invalid': policyCode.dirty && policyCode.invalid}">
+            <label for="policy-input">Policy code</label>
+            <input type="text"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': policyCode.dirty && policyCode.invalid}"
+                   id="policy-input"
+                   placeholder="ABCDEF12"
+                   aria-describedby="policy-help"
+                   formControlName="policyCode">
+            <small id="policy-help" class="form-text text-muted">8 alphanumeric policy code</small>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="submit()">Register</button>
+    </form>
+
+</div>

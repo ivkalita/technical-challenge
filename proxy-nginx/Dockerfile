@@ -4,5 +4,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY main.conf /etc/nginx/conf.d/default.conf
 COPY proxy.conf /etc/nginx/proxy.conf
 COPY entrypoint.sh /entrypoint.sh
+COPY front_dist/* /var/www/front/
 
 CMD ["/entrypoint.sh"]

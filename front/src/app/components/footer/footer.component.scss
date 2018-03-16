@@ -1,0 +1,14 @@
+@import '../../styles/colors';
+
+:host {
+  padding: 20px;
+  display: flex;
+  flex: 0 0 100px;
+  background-color: $color-light;
+  align-content: flex-end;
+  justify-content: center;
+}
+
+div {
+  text-align: center;
+}

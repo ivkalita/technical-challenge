@@ -1,0 +1,38 @@
+@import '../../styles/colors';
+
+:host {
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  padding: 0 20px;
+  display: flex;
+  flex: 0 0 80px;
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+
+  a {
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  a:hover, a:active, a:visited {
+    color: $color-white;
+    text-decoration: none;
+  }
+}
+
+.auth-container {
+  flex: 1 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  button {
+    margin: 5px;
+  }
+}

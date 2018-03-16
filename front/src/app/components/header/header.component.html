@@ -1,0 +1,8 @@
+<div class="logo-container">
+    <h3><a href="/">Genetic results</a></h3>
+</div>
+<div class="auth-container">
+    <button *ngIf="!userLoggedIn" class="btn btn-light" (click)="register()">Register</button>
+    <button *ngIf="!userLoggedIn" class="btn btn-light" (click)="login()">Login</button>
+    <button *ngIf="userLoggedIn" class="btn btn-light" (click)="logout()">Logout</button>
+</div>
