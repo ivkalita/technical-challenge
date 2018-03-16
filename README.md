@@ -1,23 +1,20 @@
-# Example of simple microservices system
+# Assignment task
 
 ## Task
 
 1. Design a database schema to record customer’s information:
-	a. First name
-	b. Last name
-	c. Email address
-	d. Password
-	e. Date of birth
-	f. 8 alphanumeric policy code
-	g. Genetic result
+	* First name
+	* Last name
+	* Email address
+	* Password
+	* Date of birth
+	* 8 alphanumeric policy code
+	* Genetic result
 2. Design  a  RESTful  service  so  that  customers  may
-	a. Login and logout
-	b. Retrieve personal data
-	c. Retrieve genetic result
+	* Login and logout
+	* Retrieve personal data
+	* Retrieve genetic result
 3. Design a Web frontend application to serve the content provided by the RESTful service
-
-## Architecture
-Nice picture here (TBD)
 
 ## Services
 
@@ -36,32 +33,31 @@ PostgreSQL database backend for auth application. For the demo purposes and "one
 
 ### 3. Nginx proxy
 
-Front nginx. Entry point for all incoming traffic.
+Front nginx. Entry point for all incoming traffic, also serves front-end application (that's not right).
 
 ### 4. Genetic result worker
 
 Not implemented yet.
 
-Worker that calculates/process users data and returns a genetic result (puts it into queue in RabbitMQ). For now it just generates fake data for every user.
+Worker that calculates/process users data and returns a genetic result (puts it into queue in RabbitMQ). Unfortunately, still not implemented, so fake data generated using migrations.
 
-### 5. Genetic result application
+### 5. Genetic result API
 
-Not implemented yet.
+Application, that provides REST API for getting user's genetic result and that responsible for genetic results storage.
 
-Application, that provides REST API for getting user's genetic result.
-
-### 6. RabbitMQ
-
-Main message broker.
+### 6. Front-end application
+Angular-based application that allows user to login/logout/sign up and get his genetic result.
 
 ## Installation
 
+All these components are implemented as docker containers. There is single `docker-compose.yml` that allow you to run the whole components together using only one command. Ofcourse, it's a bad idea to use such approach in production. For more information about what should be changed – read TODO.md
+
 ```bash
+$ git clone https://github.com/kaduev13/technical-challenge.git
+$ cd technical-challenge
 $ docker-compose up --force-recreate --build
 ```
+After that command execution, just open your browser and go to localhost:8991.
 
 ## Testing
-TBD
-
-## Roadmap
-TBD
+Unfortunatelly, no tests at all – implementation took a lot of time – much more than I expected.
